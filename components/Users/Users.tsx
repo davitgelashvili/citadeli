@@ -2,15 +2,13 @@
 
 import { Button, Row } from 'antd'
 import UserList from './List/List'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { globalStateAction } from '@/store/global'
-import { useEffect } from 'react'
-import { stat } from 'fs'
 import PopupModal from '@/modal/PopupModal'
+import AddUser from './AddUser/AddUser'
 
 const Users = () => {
     const dispatch = useDispatch()
-    // const {activePopup} = useSelector((state:any) => state.popupModal)
     
     const showModal = () =>{
         dispatch(globalStateAction.changeActivePopup(true))
@@ -23,7 +21,7 @@ const Users = () => {
             </Button>
             <UserList />
             <PopupModal title={'იუზერის დამატება'}>
-                <p>hi</p>
+                <AddUser />
             </PopupModal>
         </Row>
     )
