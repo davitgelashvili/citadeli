@@ -4,8 +4,7 @@ import { Button, Row } from 'antd'
 import UserList from './List/List'
 import { useDispatch } from 'react-redux'
 import { globalStateAction } from '@/store/global'
-import PopupModal from '@/modal/PopupModal'
-import AddUser from './AddUser/AddUser'
+import PopupModal from '@/components/Users/modal/PopupModal'
 
 const Users = () => {
     const dispatch = useDispatch()
@@ -20,9 +19,7 @@ const Users = () => {
                 Open Modal
             </Button>
             <UserList />
-            <PopupModal title={'იუზერის დამატება'}>
-                <AddUser />
-            </PopupModal>
+            <PopupModal title={'იუზერის დამატება'} />
         </Row>
     )
 }

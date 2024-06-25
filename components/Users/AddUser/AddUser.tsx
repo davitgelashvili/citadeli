@@ -1,31 +1,20 @@
 "use client"
 
-import { Button, Form, Input } from "antd"
-import { useEffect, useState } from "react"
+import { Form, Input } from "antd"
 
-const AddUser = () => {
-    const [data, setData] = useState({
-        name: ''
-    })
-
-    useEffect(()=>{
-        console.log(data)
-    }, [data])
-
+const AddUser = ({inputList, inputValue, setInputValue}:any) => {
     return (
-        <>
         <Form>
-            <Form.Item label="სახელი" name="Input" rules={[{ required: true, message: 'ველი ცარიელია' }]}>
-                <Input value={data.name} placeholder={''} onChange={(e) => setData({...data, [data.name]: e.target.value})}/>
-            </Form.Item>
-
-            <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
-                <Button type="primary" htmlType="submit">
-                    Submit
-                </Button>
-            </Form.Item>
+            {
+                inputList?.map((item:any)=>{
+                    return (
+                        <Form.Item label={item.title} name={item.name} rules={[{ required: true, message: 'ველი ცარიელია' }]} key={item.id}>
+                            <Input placeholder={item.placeholder} onChange={(e) => setInputValue({...inputValue, [item.name]: e.target.value})}/>
+                        </Form.Item>
+                    )
+                })
+            }
         </Form>
-        </>
     )
 }
 

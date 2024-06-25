@@ -1,10 +1,21 @@
+import { deleteData } from '@/http/api'
 import { Card, Col } from 'antd'
 
 const Item = ({item}:any) => {
+    const deleteItem = () =>{
+        deleteData(`/members/${item.id}`)
+
+        console.log(item)
+    }
 
     return (
         <Col>
-            <Card title={`${item.firstname} ${item.lastname}`}>
+            <Card 
+                title={`${item.firstname} ${item.lastname}`}
+                extra={
+                    <button onClick={deleteItem}>X</button>
+                }
+                >
                 <p>{item.birthday}</p>
                 <p>{item.gender}</p>
                 <p>{item.salary}</p>
