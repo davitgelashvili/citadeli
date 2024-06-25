@@ -9,14 +9,7 @@ import Sidebar from '@/components/Sidebar/Sidebar';
 import UserList from '@/components/Users/List/List';
 
 const Home = () => {
-    const [data, setData] = useState([])
-    useEffect(()=>{
-        getData('/members').then((res:any)=>{
-            setData(res)
-        })
-    }, [])
 
-    console.log(data)
     return (
         <Flex>
             <Layout>
@@ -25,7 +18,7 @@ const Home = () => {
                         <Sidebar />
                     </Sider>
                     <Content>
-                        <UserList data={data} />
+                        <h1>ციტადელი</h1>
                     </Content>
                 </Layout>
             </Layout>
