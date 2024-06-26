@@ -3,11 +3,11 @@
 import { globalStateAction } from "@/store/global"
 import { Modal } from "antd"
 import { useDispatch, useSelector } from "react-redux"
-import AddUser from "../AddUser/AddUser"
-import { useEffect, useState } from "react"
+import AddUser from "../Form/Form"
+import { useState } from "react"
 import { postData } from "@/http/api"
 
-const PopupModal = ({title, success, setSuccess}:any) => {
+const AddPopup = ({title, success, setSuccess}:any) => {
     const dispatch = useDispatch()
     const {activePopup} = useSelector((state:any) => state.popupModal)
     const [inputValue, setInputValue] = useState({
@@ -89,4 +89,4 @@ const PopupModal = ({title, success, setSuccess}:any) => {
     )
 }
 
-export default PopupModal
+export default AddPopup

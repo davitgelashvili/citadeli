@@ -29,4 +29,13 @@ const deleteData = async(param:any) => {
     }
 }
 
-export {getData, postData, deleteData}
+const editData = async(param:any, data:any) => {
+    try {
+        const respons = await axios.patch(`https://x8ki-letl-twmt.n7.xano.io/api:tSDGfQun${param}`, data)
+        return respons?.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {getData, postData, deleteData, editData}

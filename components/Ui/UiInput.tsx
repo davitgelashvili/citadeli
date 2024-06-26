@@ -28,12 +28,12 @@ const UiInput = ({item, inputValue, setInputValue}:any) => {
         )
     }else if(item.type == 'radio') {
         return (
-            <Radio.Group options={item.options} onChange={(e) => setInputValue({...inputValue, [item.name]: e.target.value})}  />
+            <Radio.Group defaultValue={inputValue?.[item.name] ? inputValue?.[item.name] : undefined}  options={item.options} onChange={(e) => setInputValue({...inputValue, [item.name]: e.target.value})}  />
         )
     }else {
         return (
             <Form.Item name={item.name} rules={[{ required: true, message: 'ველი ცარიელია' }]} key={item.id}>
-                <Input placeholder={item.placeholder} onChange={(e) => setInputValue({...inputValue, [item.name]: e.target.value})}/>
+                <Input defaultValue={inputValue?.[item.name] ? inputValue?.[item.name] : undefined} placeholder={item.placeholder} onChange={(e) => setInputValue({...inputValue, [item.name]: e.target.value})}/>
             </Form.Item>
         )
     }

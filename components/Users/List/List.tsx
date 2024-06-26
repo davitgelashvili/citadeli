@@ -16,7 +16,7 @@ const UserList = ({success, setSuccess}:any) => {
 
     return (
         <List
-            grid={{column: 4 }}
+            grid={{column: 3}}
             dataSource={data}
             renderItem={(item, index) => (
                 <Item item={item} key={item} success={success} setSuccess={setSuccess}/>

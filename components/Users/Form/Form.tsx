@@ -1,9 +1,10 @@
 "use client"
 
 import UiInput from "@/components/Ui/UiInput"
-import { Form, Input } from "antd"
+import { Form } from "antd"
 
-const AddUser = ({inputList, inputValue, setInputValue}:any) => {
+const UserForm = ({inputList, inputValue, setInputValue}:any) => {
+    console.log(inputList)
     return (
         <Form>
             {
@@ -23,4 +24,4 @@ const AddUser = ({inputList, inputValue, setInputValue}:any) => {
     )
 }
 
-export default AddUser
+export default UserForm
