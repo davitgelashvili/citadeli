@@ -4,10 +4,10 @@ import { globalStateAction } from "@/store/global"
 import { Modal } from "antd"
 import { useDispatch, useSelector } from "react-redux"
 import AddUser from "../AddUser/AddUser"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { postData } from "@/http/api"
 
-const PopupModal = ({title}:any) => {
+const PopupModal = ({title, success, setSuccess}:any) => {
     const dispatch = useDispatch()
     const {activePopup} = useSelector((state:any) => state.popupModal)
     const [inputValue, setInputValue] = useState({
@@ -15,7 +15,7 @@ const PopupModal = ({title}:any) => {
         lastname: '',
         gender: '',
         birthday: '',
-        salary: '',
+        salary: 0,
     })
 
     const inputList = [
@@ -24,6 +24,7 @@ const PopupModal = ({title}:any) => {
             title: 'სახელი',
             name: 'firstname',
             placeholder: '',
+            type: 'text',
             value: inputValue.firstname
         },
         {
@@ -31,6 +32,7 @@ const PopupModal = ({title}:any) => {
             title: 'გვარი',
             name: 'lastname',
             placeholder: '',
+            type: 'text',
             value: inputValue.lastname
         },
         {
@@ -38,6 +40,8 @@ const PopupModal = ({title}:any) => {
             title: 'სქესი',
             name: 'gender',
             placeholder: '',
+            type: 'radio',
+            options: ['male', 'female'],
             value: inputValue.gender
         },
         {
@@ -45,6 +49,7 @@ const PopupModal = ({title}:any) => {
             title: 'დაბადების თარიღი',
             name: 'birthday',
             placeholder: '',
+            type: 'date',
             value: inputValue.birthday
         },
         {
@@ -52,14 +57,15 @@ const PopupModal = ({title}:any) => {
             title: 'ხელფასი',
             name: 'salary',
             placeholder: '',
-            value: inputValue.salary
+            type: 'text',
+            value: Number(inputValue.salary)
         },
     ]
 
     const handleOk = () =>{
-        dispatch(globalStateAction.changeActivePopup(false))
         postData('/members', inputValue).finally(()=>{
-            console.log('დაემატა')
+            setSuccess(!success)
+            dispatch(globalStateAction.changeActivePopup(false))
         })
     }
 

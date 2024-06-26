@@ -2,19 +2,10 @@
 
 import { Flex, Layout } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { Header, Footer, Content } from 'antd/es/layout/layout';
-import { useEffect, useState } from 'react';
-import {getData} from '../../http/api'
+import { Content } from 'antd/es/layout/layout';
 import Sidebar from '@/components/Sidebar/Sidebar';
-import UserList from '@/components/Users/List/List';
 
 const Tasks = () => {
-    const [data, setData] = useState([])
-    useEffect(()=>{
-        getData('/members').then((res:any)=>{
-            setData(res)
-        })
-    }, [])
 
     return (
         <Flex>
@@ -24,8 +15,7 @@ const Tasks = () => {
                         <Sidebar />
                     </Sider>
                     <Content>
-                        <button>daamteba</button>
-                        <UserList data={data} />
+                        მზადების პროცესშია...
                     </Content>
                 </Layout>
             </Layout>

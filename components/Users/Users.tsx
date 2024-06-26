@@ -5,9 +5,11 @@ import UserList from './List/List'
 import { useDispatch } from 'react-redux'
 import { globalStateAction } from '@/store/global'
 import PopupModal from '@/components/Users/modal/PopupModal'
+import { useState } from 'react'
 
 const Users = () => {
     const dispatch = useDispatch()
+    const [success, setSuccess] = useState(false)
     
     const showModal = () =>{
         dispatch(globalStateAction.changeActivePopup(true))
@@ -16,10 +18,10 @@ const Users = () => {
     return (
         <Row>
             <Button type="primary" onClick={showModal}>
-                Open Modal
+                იუზერის დამატება
             </Button>
-            <UserList />
-            <PopupModal title={'იუზერის დამატება'} />
+            <UserList success={success} setSuccess={setSuccess}/>
+            <PopupModal title={'იუზერის დამატება'} success={success} setSuccess={setSuccess} />
         </Row>
     )
 }

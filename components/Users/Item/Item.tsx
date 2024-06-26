@@ -1,11 +1,11 @@
 import { deleteData } from '@/http/api'
 import { Card, Col } from 'antd'
 
-const Item = ({item}:any) => {
+const Item = ({item, success, setSuccess}:any) => {
     const deleteItem = () =>{
-        deleteData(`/members/${item.id}`)
-
-        console.log(item)
+        deleteData(`/members/${item.id}`).finally(()=>{
+            setSuccess(!success)
+        })
     }
 
     return (

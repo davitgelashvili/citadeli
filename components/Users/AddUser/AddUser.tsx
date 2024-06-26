@@ -1,5 +1,6 @@
 "use client"
 
+import UiInput from "@/components/Ui/UiInput"
 import { Form, Input } from "antd"
 
 const AddUser = ({inputList, inputValue, setInputValue}:any) => {
@@ -9,7 +10,11 @@ const AddUser = ({inputList, inputValue, setInputValue}:any) => {
                 inputList?.map((item:any)=>{
                     return (
                         <Form.Item label={item.title} name={item.name} rules={[{ required: true, message: 'ველი ცარიელია' }]} key={item.id}>
-                            <Input placeholder={item.placeholder} onChange={(e) => setInputValue({...inputValue, [item.name]: e.target.value})}/>
+                            <UiInput 
+                                inputValue={inputValue}
+                                setInputValue={setInputValue}
+                                item={item}
+                            />
                         </Form.Item>
                     )
                 })
